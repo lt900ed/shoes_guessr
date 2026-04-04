@@ -248,7 +248,7 @@
         </section>
 
         <section class="w-full text-center space-y-2 mb-4">
-            <div class="inline-flex items-center gap-2 text-outline font-label font-medium text-lg">
+            <div class="inline-flex items-center gap-2 text-outline font-label font-medium text-lg hidden">
                 <span id="result-icon" class="material-symbols-outlined">verified</span>
                 <span id="result-label">正解：</span>
             </div>
@@ -567,6 +567,7 @@
 
             // 答え合わせ画面のUI更新
             document.getElementById('answer-progress-text').innerText = `Question ${currentQuestionIndex.toString().padStart(2, '0')} / ${TOTAL_QUESTIONS}`;
+            document.getElementById('answer-image').style = `height:${(wear_type_text == '私服の靴') ? 400 : 600}px`;
             
             const titleEl = document.getElementById('result-title');
             const iconEl = document.getElementById('result-icon');
