@@ -104,7 +104,7 @@
 <body class="bg-background text-on-surface font-body overflow-x-hidden min-h-screen flex flex-col">
 
     <header class="fixed top-0 w-full z-50 bg-[#f9f9fc] dark:bg-[#1a1c1e]">
-        <div class="flex justify-between items-center px-8 py-3 md:py-6 max-w-7xl mx-auto">
+        <div class="flex justify-between items-center px-6 py-3 md:py-6 max-w-7xl mx-auto">
             <h1 class="text-[#1a1c1e] dark:text-[#f9f9fc] font-black uppercase tracking-widest font-headline text-1xl md:text-2xl">
                 UmaShoesGuessr
             </h1>
@@ -122,7 +122,7 @@
         <div class="bg-[#f3f3f6] dark:bg-[#2e3032] h-[0.5rem] w-full"></div>
     </header>
 
-    <main id="view-title" class="view-section active relative flex-grow flex-col items-center justify-center pt-24 pb-32">
+    <main id="view-title" class="view-section active relative flex-grow flex-col items-center justify-center pt-16 md:pt-24 pb-32">
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-[600px] overflow-hidden -z-10">
             <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary-container/10 rounded-full blur-[120px]"></div>
             <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-primary/10 rounded-full blur-[100px]"></div>
@@ -136,7 +136,7 @@
                     <span class="material-symbols-outlined text-primary text-8xl" style="font-variation-settings: 'FILL' 1;">shoe_cleats</span>
                 </div>
                 <h1 class="font-headline font-black text-5xl md:text-7xl tracking-tighter text-on-surface leading-none mb-4 italic">
-                    UmaShoesGuessr
+                    UmaShoes<wbr>Guessr
                 </h1>
                 <p class="font-body font-bold text-primary uppercase tracking-[0.4em] text-sm md:text-base">
                     The Ultimate Sneaker Challenge
@@ -184,8 +184,8 @@
         </div>
     </main>
 
-    <main id="view-question" class="view-section flex-grow flex-col items-center pt-24 pb-10 px-6 max-w-2xl mx-auto">
-        <div class="w-full flex flex-col items-center gap-4 mb-8">
+    <main id="view-question" class="view-section flex-grow flex-col items-center pt-16 md:pt-24 pb-10 px-6 max-w-2xl mx-auto">
+        <div class="w-full flex flex-col items-center gap-4 mb-4 md:mb-8">
             <div id="progress-bar-container" class="flex gap-1 w-full max-w-xs">
                 </div>
             <div id="progress-text" class="font-headline text-primary font-extrabold text-4xl tracking-tighter">
@@ -193,7 +193,7 @@
             </div>
         </div>
 
-        <div class="relative w-50% aspect-square bg-surface-container-low rounded-xl overflow-visible mb-8 group">
+        <div class="relative w-50% aspect-square bg-surface-container-low rounded-xl overflow-visible mb-4 md:mb-8 group">
             <div class="absolute -inset-4 bg-primary/5 rounded-[3.5rem] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div class="relative size-50% overflow-hidden rounded-xl bg-surface-container-lowest shadow-[0_32px_64px_-16px_rgba(0,65,200,0.08)]">
                 <img id="question-image" alt="Shoe Question" class="size-50% object-cover transform transition-transform duration-700 group-hover:scale-110" style="height:400px" src=""/>
@@ -203,7 +203,7 @@
             </div>
         </div>
 
-        <div class="w-full max-w-md relative mb-8">
+        <div class="w-full max-w-md relative mb-4 md:mb-8">
             <div class="relative">
                 <input id="shoe-input" class="w-full bg-surface-container-highest border-none rounded-md px-6 py-5 text-on-surface font-medium placeholder:text-outline focus:ring-2 focus:ring-primary/40 focus:bg-primary-fixed transition-all duration-300 outline-none" placeholder="答えを検索..." type="text" autocomplete="off"/>
                 <div class="absolute right-5 top-1/2 -translate-y-1/2 text-outline">
@@ -224,7 +224,7 @@
         </div>
     </main>
 
-    <main id="view-answer" class="view-section flex-grow flex-col items-center pt-24 pb-10 px-6 max-w-4xl mx-auto w-full">
+    <main id="view-answer" class="view-section flex-grow flex-col items-center pt-16 md:pt-24 pb-10 px-6 max-w-4xl mx-auto w-full">
         <section class="w-full text-center mb-6">
             <span id="answer-progress-text" class="font-label font-bold text-primary tracking-[0.3em] uppercase text-sm mb-4 block">Question 01 / 10</span>
             <h2 id="result-title" class="font-headline font-black text-5xl tracking-tighter text-on-background italic transform -skew-x-6">
@@ -232,7 +232,7 @@
             </h2>
         </section>
 
-        <section class="relative w-66 aspect-3/4 mb-8 max-w-2xl mx-auto">
+        <section class="relative w-66 aspect-3/4 mb-4 md:mb-8 max-w-2xl mx-auto">
             <div class="absolute inset-0 bg-surface-container-low rounded-xl -rotate-2 scale-105"></div>
             <div class="relative z-10 w-66 h-full overflow-hidden rounded-xl kinetic-shadow border-4 border-surface-container-lowest">
                 <img id="answer-image" alt="Shoe Detail" class="object-cover" style="height:400px" src=""/>
