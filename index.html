@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Uma私服の靴Guessr</title>
+    <title>UmaShoesGuessr</title>
     <link rel="apple-touch-icon" type="image/png" href="./apple-touch-icon-180x180.png">
     <link rel="icon" type="image/png" href="./icon-192x192.png">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -78,8 +78,11 @@
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        .kinetic-gradient {
+        .main-button {
             background: linear-gradient(135deg, #0041c8 0%, #0055ff 100%);
+        }
+        .hard-button {
+            background: linear-gradient(135deg, #ba1a1a 0%, #ff5542 100%);
         }
         .kinetic-shadow {
             box-shadow: 0 32px 64px -12px rgba(26, 28, 30, 0.08);
@@ -103,7 +106,7 @@
     <header class="fixed top-0 w-full z-50 bg-[#f9f9fc] dark:bg-[#1a1c1e]">
         <div class="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
             <h1 class="text-[#1a1c1e] dark:text-[#f9f9fc] font-black uppercase tracking-widest font-headline text-2xl">
-                Uma私服の靴Guessr
+                UmaShoesGuessr
             </h1>
             <div class="flex items-center gap-6" style="display:none">
                 <nav class="hidden md:flex gap-8">
@@ -133,7 +136,7 @@
                     <span class="material-symbols-outlined text-primary text-8xl" style="font-variation-settings: 'FILL' 1;">shoe_cleats</span>
                 </div>
                 <h1 class="font-headline font-black text-5xl md:text-7xl tracking-tighter text-on-surface leading-none mb-4 italic">
-                    Uma私服の靴Guessr
+                    UmaShoesGuessr
                 </h1>
                 <p class="font-body font-bold text-primary uppercase tracking-[0.4em] text-sm md:text-base">
                     The Ultimate Sneaker Challenge
@@ -159,10 +162,16 @@
             </div>
             
             <div class="flex flex-col items-center space-y-8">
-                <button onclick="startQuiz()" class="kinetic-gradient group relative px-16 py-6 rounded-full text-on-primary font-headline font-black text-2xl tracking-widest uppercase transition-all active:scale-95 shadow-lg shadow-primary/20">
-                    <span class="relative z-10">スタート</span>
-                    <div class="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                </button>
+                <div class="flex flex-row">
+                    <button onclick="startQuiz('race')" class="main-button group relative px-16 py-6 rounded-full text-on-primary font-headline font-black text-2xl tracking-widest uppercase transition-all active:scale-95 shadow-lg shadow-primary/20">
+                        <span class="relative z-10">勝負服に挑戦！<br>Easy</span>
+                        <div class="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </button>
+                    <button onclick="startQuiz('casual')" class="hard-button group relative px-16 py-6 rounded-full text-on-primary font-headline font-black text-2xl tracking-widest uppercase transition-all active:scale-95 shadow-lg shadow-primary/20">
+                        <span class="relative z-10">私服に挑戦！<br>Hard</span>
+                        <div class="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </button>
+                </div>
                 <div class="flex items-center space-y-0 space-x-4">
                     <div class="w-12 h-1 bg-surface-container-high rounded-full"></div>
                     <p class="text-outline font-label font-bold uppercase tracking-widest text-xs">Press to engage speed</p>
@@ -208,8 +217,8 @@
         </div>
 
         <div class="left-0 w-full flex justify-center px-6 z-40 pointer-events-none">
-            <button onclick="checkAnswer()" class="pointer-events-auto w-full max-w-md rounded-full bg-gradient-to-br from-[#0041c8] to-[#0055ff] py-6 px-8 flex items-center justify-center gap-3 shadow-[0_12px_48px_rgba(0,65,200,0.3)] active:scale-95 transition-transform duration-200">
-                <span class="text-white font-headline font-bold text-xl tracking-widest uppercase">答え</span>
+            <button onclick="checkAnswer()" class="pointer-events-auto w-full max-w-md rounded-full main-button py-6 px-8 flex items-center justify-center gap-3 shadow-[0_12px_48px_rgba(0,65,200,0.3)] active:scale-95 transition-transform duration-200">
+                <span id="skip-button-text" class="text-white font-headline font-bold text-xl tracking-widest uppercase">スキップ</span>
                 <span class="material-symbols-outlined text-white">chevron_right</span>
             </button>
         </div>
@@ -249,7 +258,7 @@
         </section>
 
         <div class="left-0 w-full flex justify-center px-6 z-40 pointer-events-none">
-            <button onclick="nextStep()" class="pointer-events-auto w-full max-w-md rounded-full bg-gradient-to-br from-[#0041c8] to-[#0055ff] text-on-primary py-6 px-8 flex items-center justify-center gap-3 shadow-[0_12px_48px_rgba(0,65,200,0.3)] active:scale-95 transition-transform duration-200">
+            <button onclick="nextStep()" class="pointer-events-auto w-full max-w-md rounded-full main-button text-on-primary py-6 px-8 flex items-center justify-center gap-3 shadow-[0_12px_48px_rgba(0,65,200,0.3)] active:scale-95 transition-transform duration-200">
                 <span class="text-white font-headline font-bold text-xl tracking-widest uppercase">次へ進む</span>
                 <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
             </button>
@@ -263,10 +272,10 @@
             
             <div class="w-full bg-surface-container-lowest rounded-xl p-8 text-center relative overflow-hidden shadow-sm">
                 <div class="py-12">
-                    <p class="font-headline font-bold text-on-surface-variant uppercase tracking-widest text-lg mb-4">Final Score</p>
+                    <p id="final-score-title" class="font-headline font-bold text-on-surface-variant uppercase tracking-widest text-lg mb-4">Final Score Of 私服の靴</p>
                     <div class="flex flex-col items-center justify-center relative">
                         <span id="final-score" class="font-headline font-black text-[8rem] leading-none tracking-tighter text-primary">8/10</span>
-                        <div class="absolute bottom-4 h-4 w-48 kinetic-gradient rounded-full opacity-20 -rotate-2 translate-y-4"></div>
+                        <div class="absolute bottom-4 h-4 w-48 main-button rounded-full opacity-20 -rotate-2 translate-y-4"></div>
                     </div>
                 </div>
                 
@@ -279,7 +288,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mt-12">
-                <button onclick="shareOnX()" class="kinetic-gradient rounded-full py-6 px-10 flex items-center justify-center gap-4 text-white hover:opacity-90 transition-all active:scale-95 group shadow-xl">
+                <button onclick="shareOnX()" class="main-button rounded-full py-6 px-10 flex items-center justify-center gap-4 text-white hover:opacity-90 transition-all active:scale-95 group shadow-xl">
                     <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.925H5.022z"></path></svg>
                     <span class="font-headline font-bold text-xl tracking-tight">結果をXで共有</span>
                 </button>
@@ -296,7 +305,7 @@
     </main>
 
     <script>
-        // 靴のデータベース (15個ほどのダミーデータ)
+        // 靴のデータベース
         const shoesDB = [
             { shoes_no: "001", shoes_name: "スペシャルウィーク" },
             { shoes_no: "002", shoes_name: "サイレンススズカ" },
@@ -467,9 +476,11 @@
         }
 
         // クイズ開始
-        function startQuiz() {
+        function startQuiz(wear_type) {
             currentQuestionIndex = 0;
             score = 0;
+            wear_type_no = (wear_type == 'casual') ? 1 : 3;
+            wear_type_text = (wear_type == 'casual') ? "私服の靴" : "勝負服の靴";
             // プレイごとに問題リストをリセットしてシャッフル
             availableShoes = [...shoesDB].sort(() => 0.5 - Math.random());
             renderQuestion();
@@ -489,9 +500,10 @@
                 progressContainer.appendChild(div);
             }
             document.getElementById('progress-text').innerHTML = `${currentQuestionIndex}<span class="text-outline-variant mx-1">/</span>${TOTAL_QUESTIONS}`;
+            document.getElementById('skip-button-text').innerText = 'スキップ';
 
             // 画像の更新
-            const imageUrl = `./img/${currentShoe.shoes_no}1.jpg`;
+            const imageUrl = `./img/${currentShoe.shoes_no}${wear_type_no}.jpg`;
             document.getElementById('question-image').src = imageUrl;
             document.getElementById('answer-shoes-image').src = imageUrl;
 
@@ -530,6 +542,11 @@
                 suggestBox.classList.remove('hidden');
             } else {
                 suggestBox.classList.add('hidden');
+            }
+            if (inputField.value == '') {
+                document.getElementById('skip-button-text').innerText = 'スキップ';
+            } else {
+                document.getElementById('skip-button-text').innerText = '答えを表示';
             }
         });
 
@@ -571,7 +588,7 @@
 
             // 画像と名前を更新
             document.getElementById('correct-shoe-name').innerHTML = currentShoe.shoes_name.replace('PRO', '<span class="text-primary">PRO</span>');
-            document.getElementById('answer-image').src = `./img/${currentShoe.shoes_no}2.jpg`;
+            document.getElementById('answer-image').src = `./img/${currentShoe.shoes_no}${wear_type_no + 1}.jpg`;
 
             switchView('answer');
         }
@@ -589,8 +606,10 @@
         function renderResult() {
             document.getElementById('final-score').innerText = `${score}/${TOTAL_QUESTIONS}`;
             
+            const scoreTitleEl = document.getElementById('final-score-title');
             const titleEl = document.getElementById('final-message-title');
             const descEl = document.getElementById('final-message-desc');
+            scoreTitleEl.innerText = `Final Score Of ${wear_type_text}`;
 
             if (score === TOTAL_QUESTIONS) {
                 titleEl.innerText = "パーフェクト！靴の神様です！";
@@ -611,14 +630,14 @@
 
         // 結果をXで共有 (Web Intent)
         function shareOnX() {
-            const text = `「Uma私服の靴Guessr」で${TOTAL_QUESTIONS}問中${score}問正解しました！👟⚡️\nhttps://lt900ed.github.io/shoes_guessr/\n#Uma私服の靴Guessr #ウマ娘`;
+            const text = `「UmaShoesGuessr」で${wear_type_text}を${TOTAL_QUESTIONS}問中${score}問当てました！👟⚡️\nhttps://lt900ed.github.io/shoes_guessr/\n#UmaShoesGuessr #ウマ娘`;
             const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         }
 
         // 結果をコピー (Clipboard API)
         function copyResult() {
-            const text = `「Uma私服の靴Guessr」で${TOTAL_QUESTIONS}問中${score}問正解しました！👟⚡️\nhttps://lt900ed.github.io/shoes_guessr/`;
+            const text = `「UmaShoesGuessr」で${wear_type_text}を${TOTAL_QUESTIONS}問中${score}問当てました！👟⚡️\nhttps://lt900ed.github.io/shoes_guessr/`;
             navigator.clipboard.writeText(text).then(() => {
                 alert("クリップボードにコピーしました！");
             }).catch(err => {
