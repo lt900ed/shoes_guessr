@@ -186,7 +186,7 @@
     </main>
 
     <main id="view-question" class="view-section flex-grow flex-col items-center pt-16 md:pt-24 pb-10 px-6 max-w-2xl mx-auto">
-        <div class="w-full flex flex-col items-center gap-4 mb-4 md:mb-8">
+        <div class="w-full flex flex-col items-center gap-4 mb-4">
             <div id="progress-bar-container" class="flex gap-1 w-full max-w-xs">
                 </div>
             <div id="progress-text" class="font-headline text-primary font-extrabold text-4xl tracking-tighter">
@@ -206,7 +206,7 @@
 
         <div class="w-full max-w-md relative mb-4 md:mb-8">
             <div class="relative">
-                <input id="shoe-input" class="w-full bg-surface-container-highest border-none rounded-md px-6 py-5 text-on-surface font-medium placeholder:text-outline focus:ring-2 focus:ring-primary/40 focus:bg-primary-fixed transition-all duration-300 outline-none" placeholder="答えを検索..." type="text" autocomplete="off"/>
+                <input id="shoe-input" class="w-full bg-surface-container-highest border-none rounded-md px-6 py-5 text-on-surface font-medium placeholder:text-outline focus:ring-2 focus:ring-primary/40 focus:bg-primary-fixed transition-all duration-300 outline-none" placeholder="e.g.ウオッカ,Vodka..." type="text" autocomplete="off"/>
                 <div class="absolute right-5 top-1/2 -translate-y-1/2 text-outline">
                     <span class="material-symbols-outlined">search</span>
                 </div>
@@ -226,14 +226,14 @@
     </main>
 
     <main id="view-answer" class="view-section flex-grow flex-col items-center pt-16 md:pt-24 pb-10 px-6 max-w-4xl mx-auto w-full">
-        <section class="w-full text-center mb-6">
+        <section class="w-full text-center mb-4">
             <span id="answer-progress-text" class="font-label font-bold text-primary tracking-[0.3em] uppercase text-sm mb-4 block">Question 01 / 10</span>
             <h2 id="result-title" class="font-headline font-black text-5xl tracking-tighter text-on-background italic transform -skew-x-6">
                 正解！
             </h2>
         </section>
 
-        <section class="relative w-66 aspect-3/4 mb-4 md:mb-8 max-w-2xl mx-auto">
+        <section class="relative w-66 aspect-3/4 mb-4 max-w-2xl mx-auto">
             <div class="absolute inset-0 bg-surface-container-low rounded-xl -rotate-2 scale-105"></div>
             <div class="relative z-10 w-66 h-full overflow-hidden rounded-xl kinetic-shadow border-4 border-surface-container-lowest">
                 <img id="answer-image" alt="Shoe Detail" class="object-cover" style="height:400px" src=""/>
@@ -243,12 +243,12 @@
                     </div>
                 </div> -->
             </div>
-            <div class="absolute -bottom-8 -right-8 z-30 w-32 h-32 pointer-events-none">
+            <div class="absolute -bottom-2 -right-8 z-30 w-32 h-32 pointer-events-none">
                 <img id="answer-shoes-image" alt="Detailed view of the athletic sneaker" class="w-full h-full object-contain drop-shadow-2xl rotate-12" data-alt="Close up of a premium red athletic sneaker floating" src=""/>
             </div>
         </section>
 
-        <section class="w-full text-center space-y-2 mb-4">
+        <section class="w-full text-center mb-4">
             <div class="inline-flex items-center gap-2 text-outline font-label font-medium text-lg hidden">
                 <span id="result-icon" class="material-symbols-outlined">verified</span>
                 <span id="result-label">正解：</span>
@@ -256,6 +256,9 @@
             <h3 id="correct-shoe-name" class="font-headline font-extrabold text-3xl text-on-surface tracking-tight">
                 Shoe Name
             </h3>
+            <h4 id="correct-shoe-name-en" class="font-headline font-extrabold text-2xl text-on-surface tracking-tight">
+                Shoe Name
+            </h4>
         </section>
 
         <div class="left-0 w-full flex justify-center px-6 z-40 pointer-events-none">
@@ -308,148 +311,148 @@
     <script>
         // 靴のデータベース
         const shoesDB = [
-            { shoes_no: "001", shoes_name: "スペシャルウィーク" },
-            { shoes_no: "002", shoes_name: "サイレンススズカ" },
-            { shoes_no: "003", shoes_name: "トウカイテイオー" },
-            { shoes_no: "004", shoes_name: "マルゼンスキー" },
-            { shoes_no: "005", shoes_name: "フジキセキ" },
-            { shoes_no: "006", shoes_name: "オグリキャップ" },
-            { shoes_no: "007", shoes_name: "ゴールドシップ" },
-            { shoes_no: "008", shoes_name: "ウオッカ" },
-            { shoes_no: "009", shoes_name: "ダイワスカーレット" },
-            { shoes_no: "010", shoes_name: "タイキシャトル" },
-            { shoes_no: "011", shoes_name: "グラスワンダー" },
-            { shoes_no: "012", shoes_name: "ヒシアマゾン" },
-            { shoes_no: "013", shoes_name: "メジロマックイーン" },
-            { shoes_no: "014", shoes_name: "エルコンドルパサー" },
-            { shoes_no: "015", shoes_name: "テイエムオペラオー" },
-            { shoes_no: "016", shoes_name: "ナリタブライアン" },
-            { shoes_no: "017", shoes_name: "シンボリルドルフ" },
-            { shoes_no: "018", shoes_name: "エアグルーヴ" },
-            { shoes_no: "019", shoes_name: "アグネスデジタル" },
-            { shoes_no: "020", shoes_name: "セイウンスカイ" },
-            { shoes_no: "021", shoes_name: "タマモクロス" },
-            { shoes_no: "022", shoes_name: "ファインモーション" },
-            { shoes_no: "023", shoes_name: "ビワハヤヒデ" },
-            { shoes_no: "024", shoes_name: "マヤノトップガン" },
-            { shoes_no: "025", shoes_name: "マンハッタンカフェ" },
-            { shoes_no: "026", shoes_name: "ミホノブルボン" },
-            { shoes_no: "027", shoes_name: "メジロライアン" },
-            { shoes_no: "028", shoes_name: "ヒシアケボノ" },
-            { shoes_no: "029", shoes_name: "ユキノビジン" },
-            { shoes_no: "030", shoes_name: "ライスシャワー" },
-            { shoes_no: "031", shoes_name: "アイネスフウジン" },
-            { shoes_no: "032", shoes_name: "アグネスタキオン" },
-            { shoes_no: "033", shoes_name: "アドマイヤベガ" },
-            { shoes_no: "034", shoes_name: "イナリワン" },
-            { shoes_no: "035", shoes_name: "ウイニングチケット" },
-            { shoes_no: "036", shoes_name: "エアシャカール" },
-            { shoes_no: "037", shoes_name: "エイシンフラッシュ" },
-            { shoes_no: "038", shoes_name: "カレンチャン" },
-            { shoes_no: "039", shoes_name: "カワカミプリンセス" },
-            { shoes_no: "040", shoes_name: "ゴールドシチー" },
-            { shoes_no: "041", shoes_name: "サクラバクシンオー" },
-            { shoes_no: "042", shoes_name: "シーキングザパール" },
-            { shoes_no: "043", shoes_name: "シンコウウインディ" },
-            { shoes_no: "044", shoes_name: "スイープトウショウ" },
-            { shoes_no: "045", shoes_name: "スーパークリーク" },
-            { shoes_no: "046", shoes_name: "スマートファルコン" },
-            { shoes_no: "047", shoes_name: "ゼンノロブロイ" },
-            { shoes_no: "048", shoes_name: "トーセンジョーダン" },
-            { shoes_no: "049", shoes_name: "ナカヤマフェスタ" },
-            { shoes_no: "050", shoes_name: "ナリタタイシン" },
-            { shoes_no: "051", shoes_name: "ニシノフラワー" },
-            { shoes_no: "052", shoes_name: "ハルウララ" },
-            { shoes_no: "053", shoes_name: "バンブーメモリー" },
-            { shoes_no: "054", shoes_name: "ビコーペガサス" },
-            { shoes_no: "055", shoes_name: "マーベラスサンデー" },
-            { shoes_no: "056", shoes_name: "マチカネフクキタル" },
-            { shoes_no: "057", shoes_name: "ミスターシービー" },
-            { shoes_no: "058", shoes_name: "メイショウドトウ" },
-            { shoes_no: "059", shoes_name: "メジロドーベル" },
-            { shoes_no: "060", shoes_name: "ナイスネイチャ" },
-            { shoes_no: "061", shoes_name: "キングヘイロー" },
-            { shoes_no: "062", shoes_name: "マチカネタンホイザ" },
-            { shoes_no: "063", shoes_name: "イクノディクタス" },
-            { shoes_no: "064", shoes_name: "メジロパーマー" },
-            { shoes_no: "065", shoes_name: "ダイタクヘリオス" },
-            { shoes_no: "066", shoes_name: "ツインターボ" },
-            { shoes_no: "067", shoes_name: "サトノダイヤモンド" },
-            { shoes_no: "068", shoes_name: "キタサンブラック" },
-            { shoes_no: "069", shoes_name: "サクラチヨノオー" },
-            { shoes_no: "070", shoes_name: "シリウスシンボリ" },
-            { shoes_no: "071", shoes_name: "メジロアルダン" },
-            { shoes_no: "072", shoes_name: "ヤエノムテキ" },
-            { shoes_no: "073", shoes_name: "メジロブライト" },
-            { shoes_no: "074", shoes_name: "ナリタトップロード" },
-            { shoes_no: "075", shoes_name: "サクラローレル" },
-            { shoes_no: "076", shoes_name: "ヤマニンゼファー" },
-            { shoes_no: "077", shoes_name: "アストンマーチャン" },
-            { shoes_no: "078", shoes_name: "サトノクラウン" },
-            { shoes_no: "079", shoes_name: "シュヴァルグラン" },
-            { shoes_no: "080", shoes_name: "ツルマルツヨシ" },
-            { shoes_no: "081", shoes_name: "コパノリッキー" },
-            { shoes_no: "082", shoes_name: "シンボリクリスエス" },
-            { shoes_no: "083", shoes_name: "タニノギムレット" },
-            // { shoes_no: "084", shoes_name: "デアリングタクト" },
-            { shoes_no: "085", shoes_name: "ホッコータルマエ" },
-            { shoes_no: "086", shoes_name: "ワンダーアキュート" },
-            { shoes_no: "087", shoes_name: "ダイイチルビー" },
-            { shoes_no: "088", shoes_name: "ケイエスミラクル" },
-            { shoes_no: "089", shoes_name: "メジロラモーヌ" },
-            { shoes_no: "090", shoes_name: "カツラギエース" },
-            { shoes_no: "091", shoes_name: "ジャングルポケット" },
-            { shoes_no: "092", shoes_name: "ネオユニヴァース" },
-            { shoes_no: "093", shoes_name: "ヒシミラクル" },
-            { shoes_no: "094", shoes_name: "タップダンスシチー" },
-            { shoes_no: "095", shoes_name: "サウンズオブアース" },
-            { shoes_no: "096", shoes_name: "ノースフライト" },
-            { shoes_no: "097", shoes_name: "ドゥラメンテ" },
-            { shoes_no: "098", shoes_name: "ヴィルシーナ" },
-            { shoes_no: "099", shoes_name: "ヴィブロス" },
-            // { shoes_no: "100", shoes_name: "サムソンビッグ" },
-            { shoes_no: "101", shoes_name: "ロイスアンドロイス" },
-            { shoes_no: "102", shoes_name: "シーザリオ" },
-            { shoes_no: "103", shoes_name: "ラインクラフト" },
-            { shoes_no: "104", shoes_name: "エアメサイア" },
-            // { shoes_no: "105", shoes_name: "デアリングハート" },
-            { shoes_no: "106", shoes_name: "オルフェーヴル" },
-            { shoes_no: "107", shoes_name: "ジェンティルドンナ" },
-            { shoes_no: "108", shoes_name: "ウインバリアシオン" },
-            { shoes_no: "109", shoes_name: "スティルインラブ" },
-            { shoes_no: "110", shoes_name: "ダンツフレーム" },
-            { shoes_no: "111", shoes_name: "ノーリーズン" },
-            { shoes_no: "112", shoes_name: "フリオーソ" },
-            { shoes_no: "113", shoes_name: "トランセンド" },
-            { shoes_no: "114", shoes_name: "エスポワールシチー" },
-            { shoes_no: "115", shoes_name: "ドリームジャーニー" },
-            { shoes_no: "116", shoes_name: "ブエナビスタ" },
-            { shoes_no: "117", shoes_name: "ビリーヴ" },
-            { shoes_no: "118", shoes_name: "カルストンライトオ" },
-            { shoes_no: "119", shoes_name: "デュランダル" },
-            { shoes_no: "120", shoes_name: "バブルガムフェロー" },
-            { shoes_no: "121", shoes_name: "フサイチパンドラ" },
-            // { shoes_no: "122", shoes_name: "ブラストワンピース" },
-            // { shoes_no: "123", shoes_name: "サクラチトセオー" },
-            { shoes_no: "124", shoes_name: "グランアレグリア" },
-            // { shoes_no: "125", shoes_name: "ラッキーライラック" },
-            { shoes_no: "126", shoes_name: "アーモンドアイ" },
-            { shoes_no: "127", shoes_name: "ラヴズオンリーユー" },
-            { shoes_no: "128", shoes_name: "クロノジェネシス" },
-            // { shoes_no: "129", shoes_name: "カレンブーケドール" },
-            { shoes_no: "130", shoes_name: "フェノーメノ" },
-            { shoes_no: "131", shoes_name: "ステイゴールド" },
-            // { shoes_no: "132", shoes_name: "アドマイヤグルーヴ" },
-            // { shoes_no: "133", shoes_name: "レッドディザイア" },
-            { shoes_no: "134", shoes_name: "キセキ" },
-            // { shoes_no: "135", shoes_name: "フォーエバーヤング" },
-            { shoes_no: "136", shoes_name: "ヴィクトワールピサ" },
-            // { shoes_no: "137", shoes_name: "マルシュロレーヌ" },
-            // { shoes_no: "138", shoes_name: "ロゴタイプ" },
-            // { shoes_no: "139", shoes_name: "ローズキングダム" },
-            // { shoes_no: "140", shoes_name: "ルーラーシップ" },
-            // { shoes_no: "141", shoes_name: "エピファネイア" },
-    ];
+            { shoes_no: "001", shoes_name: "スペシャルウィーク", shoes_name_en: "Special Week" },
+            { shoes_no: "002", shoes_name: "サイレンススズカ", shoes_name_en: "Silence Suzuka" },
+            { shoes_no: "003", shoes_name: "トウカイテイオー", shoes_name_en: "Tokai Teio" },
+            { shoes_no: "004", shoes_name: "マルゼンスキー", shoes_name_en: "Maruzensky" },
+            { shoes_no: "005", shoes_name: "フジキセキ", shoes_name_en: "Fuji Kiseki" },
+            { shoes_no: "006", shoes_name: "オグリキャップ", shoes_name_en: "Oguri Cap" },
+            { shoes_no: "007", shoes_name: "ゴールドシップ", shoes_name_en: "Gold Ship" },
+            { shoes_no: "008", shoes_name: "ウオッカ", shoes_name_en: "Vodka" },
+            { shoes_no: "009", shoes_name: "ダイワスカーレット", shoes_name_en: "Daiwa Scarlet" },
+            { shoes_no: "010", shoes_name: "タイキシャトル", shoes_name_en: "Taiki Shuttle" },
+            { shoes_no: "011", shoes_name: "グラスワンダー", shoes_name_en: "Grass Wonder" },
+            { shoes_no: "012", shoes_name: "ヒシアマゾン", shoes_name_en: "Hishi Amazon" },
+            { shoes_no: "013", shoes_name: "メジロマックイーン", shoes_name_en: "Mejiro McQueen" },
+            { shoes_no: "014", shoes_name: "エルコンドルパサー", shoes_name_en: "El Condor Pasa" },
+            { shoes_no: "015", shoes_name: "テイエムオペラオー", shoes_name_en: "T.M. Opera O" },
+            { shoes_no: "016", shoes_name: "ナリタブライアン", shoes_name_en: "Narita Brian" },
+            { shoes_no: "017", shoes_name: "シンボリルドルフ", shoes_name_en: "Symboli Rudolf" },
+            { shoes_no: "018", shoes_name: "エアグルーヴ", shoes_name_en: "Air Groove" },
+            { shoes_no: "019", shoes_name: "アグネスデジタル", shoes_name_en: "Agnes Digital" },
+            { shoes_no: "020", shoes_name: "セイウンスカイ", shoes_name_en: "Seiun Sky" },
+            { shoes_no: "021", shoes_name: "タマモクロス", shoes_name_en: "Tamamo Cross" },
+            { shoes_no: "022", shoes_name: "ファインモーション", shoes_name_en: "Fine Motion" },
+            { shoes_no: "023", shoes_name: "ビワハヤヒデ", shoes_name_en: "Biwa Hayahide" },
+            { shoes_no: "024", shoes_name: "マヤノトップガン", shoes_name_en: "Mayano Top Gun" },
+            { shoes_no: "025", shoes_name: "マンハッタンカフェ", shoes_name_en: "Manhattan Cafe" },
+            { shoes_no: "026", shoes_name: "ミホノブルボン", shoes_name_en: "Mihono Bourbon" },
+            { shoes_no: "027", shoes_name: "メジロライアン", shoes_name_en: "Mejiro Ryan" },
+            { shoes_no: "028", shoes_name: "ヒシアケボノ", shoes_name_en: "Hishi Akebono" },
+            { shoes_no: "029", shoes_name: "ユキノビジン", shoes_name_en: "Yukino Bijin" },
+            { shoes_no: "030", shoes_name: "ライスシャワー", shoes_name_en: "Rice Shower" },
+            { shoes_no: "031", shoes_name: "アイネスフウジン", shoes_name_en: "Ines Fujin" },
+            { shoes_no: "032", shoes_name: "アグネスタキオン", shoes_name_en: "Agnes Tachyon" },
+            { shoes_no: "033", shoes_name: "アドマイヤベガ", shoes_name_en: "Admire Vega" },
+            { shoes_no: "034", shoes_name: "イナリワン", shoes_name_en: "Inari One" },
+            { shoes_no: "035", shoes_name: "ウイニングチケット", shoes_name_en: "Winning Ticket" },
+            { shoes_no: "036", shoes_name: "エアシャカール", shoes_name_en: "Air Shakur" },
+            { shoes_no: "037", shoes_name: "エイシンフラッシュ", shoes_name_en: "Eishin Flash" },
+            { shoes_no: "038", shoes_name: "カレンチャン", shoes_name_en: "Curren Chan" },
+            { shoes_no: "039", shoes_name: "カワカミプリンセス", shoes_name_en: "Kawakami Princess" },
+            { shoes_no: "040", shoes_name: "ゴールドシチー", shoes_name_en: "Gold City" },
+            { shoes_no: "041", shoes_name: "サクラバクシンオー", shoes_name_en: "Sakura Bakushin O" },
+            { shoes_no: "042", shoes_name: "シーキングザパール", shoes_name_en: "Seeking the Pearl" },
+            { shoes_no: "043", shoes_name: "シンコウウインディ", shoes_name_en: "Shinko Windy" },
+            { shoes_no: "044", shoes_name: "スイープトウショウ", shoes_name_en: "Sweep Tosho" },
+            { shoes_no: "045", shoes_name: "スーパークリーク", shoes_name_en: "Super Creek" },
+            { shoes_no: "046", shoes_name: "スマートファルコン", shoes_name_en: "Smart Falcon" },
+            { shoes_no: "047", shoes_name: "ゼンノロブロイ", shoes_name_en: "Zenno Rob Roy" },
+            { shoes_no: "048", shoes_name: "トーセンジョーダン", shoes_name_en: "Tosen Jordan" },
+            { shoes_no: "049", shoes_name: "ナカヤマフェスタ", shoes_name_en: "Nakayama Festa" },
+            { shoes_no: "050", shoes_name: "ナリタタイシン", shoes_name_en: "Narita Taishin" },
+            { shoes_no: "051", shoes_name: "ニシノフラワー", shoes_name_en: "Nishino Flower" },
+            { shoes_no: "052", shoes_name: "ハルウララ", shoes_name_en: "Haru Urara" },
+            { shoes_no: "053", shoes_name: "バンブーメモリー", shoes_name_en: "Bamboo Memory" },
+            { shoes_no: "054", shoes_name: "ビコーペガサス", shoes_name_en: "Biko Pegasus" },
+            { shoes_no: "055", shoes_name: "マーベラスサンデー", shoes_name_en: "Marvelous Sunday" },
+            { shoes_no: "056", shoes_name: "マチカネフクキタル", shoes_name_en: "Matikanefukukitaru" },
+            { shoes_no: "057", shoes_name: "ミスターシービー", shoes_name_en: "Mr. C.B." },
+            { shoes_no: "058", shoes_name: "メイショウドトウ", shoes_name_en: "Meisho Doto" },
+            { shoes_no: "059", shoes_name: "メジロドーベル", shoes_name_en: "Mejiro Dober" },
+            { shoes_no: "060", shoes_name: "ナイスネイチャ", shoes_name_en: "Nice Nature" },
+            { shoes_no: "061", shoes_name: "キングヘイロー", shoes_name_en: "King Halo" },
+            { shoes_no: "062", shoes_name: "マチカネタンホイザ", shoes_name_en: "Matikanetannhauser" },
+            { shoes_no: "063", shoes_name: "イクノディクタス", shoes_name_en: "Ikuno Dictus" },
+            { shoes_no: "064", shoes_name: "メジロパーマー", shoes_name_en: "Mejiro Palmer" },
+            { shoes_no: "065", shoes_name: "ダイタクヘリオス", shoes_name_en: "Daitaku Helios" },
+            { shoes_no: "066", shoes_name: "ツインターボ", shoes_name_en: "Twin Turbo" },
+            { shoes_no: "067", shoes_name: "サトノダイヤモンド", shoes_name_en: "Satono Diamond" },
+            { shoes_no: "068", shoes_name: "キタサンブラック", shoes_name_en: "Kitasan Black" },
+            { shoes_no: "069", shoes_name: "サクラチヨノオー", shoes_name_en: "Sakura Chiyono O" },
+            { shoes_no: "070", shoes_name: "シリウスシンボリ", shoes_name_en: "Sirius Symboli" },
+            { shoes_no: "071", shoes_name: "メジロアルダン", shoes_name_en: "Mejiro Ardan" },
+            { shoes_no: "072", shoes_name: "ヤエノムテキ", shoes_name_en: "Yaeno Muteki" },
+            { shoes_no: "073", shoes_name: "メジロブライト", shoes_name_en: "Mejiro Bright" },
+            { shoes_no: "074", shoes_name: "ナリタトップロード", shoes_name_en: "Narita Top Road" },
+            { shoes_no: "075", shoes_name: "サクラローレル", shoes_name_en: "Sakura Laurel" },
+            { shoes_no: "076", shoes_name: "ヤマニンゼファー", shoes_name_en: "Yamanin Zephyr" },
+            { shoes_no: "077", shoes_name: "アストンマーチャン", shoes_name_en: "Aston Machan" },
+            { shoes_no: "078", shoes_name: "サトノクラウン", shoes_name_en: "Satono Crown" },
+            { shoes_no: "079", shoes_name: "シュヴァルグラン", shoes_name_en: "Cheval Grand" },
+            { shoes_no: "080", shoes_name: "ツルマルツヨシ", shoes_name_en: "Tsurumaru Tsuyoshi" },
+            { shoes_no: "081", shoes_name: "コパノリッキー", shoes_name_en: "Copano Rickey" },
+            { shoes_no: "082", shoes_name: "シンボリクリスエス", shoes_name_en: "Symboli Kris S" },
+            { shoes_no: "083", shoes_name: "タニノギムレット", shoes_name_en: "Tanino Gimlet" },
+            // { shoes_no: "084", shoes_name: "デアリングタクト", shoes_name_en: "Daring Tact" },
+            { shoes_no: "085", shoes_name: "ホッコータルマエ", shoes_name_en: "Hokko Tarumae" },
+            { shoes_no: "086", shoes_name: "ワンダーアキュート", shoes_name_en: "Wonder Acute" },
+            { shoes_no: "087", shoes_name: "ダイイチルビー", shoes_name_en: "Daiichi Ruby" },
+            { shoes_no: "088", shoes_name: "ケイエスミラクル", shoes_name_en: "K.S.Miracle" },
+            { shoes_no: "089", shoes_name: "メジロラモーヌ", shoes_name_en: "Mejiro Ramonu" },
+            { shoes_no: "090", shoes_name: "カツラギエース", shoes_name_en: "Katsuragi Ace" },
+            { shoes_no: "091", shoes_name: "ジャングルポケット", shoes_name_en: "Jungle Pocket" },
+            { shoes_no: "092", shoes_name: "ネオユニヴァース", shoes_name_en: "Neo Universe" },
+            { shoes_no: "093", shoes_name: "ヒシミラクル", shoes_name_en: "Hishi Miracle" },
+            { shoes_no: "094", shoes_name: "タップダンスシチー", shoes_name_en: "Tap Dance City" },
+            { shoes_no: "095", shoes_name: "サウンズオブアース", shoes_name_en: "Sounds of Earth" },
+            { shoes_no: "096", shoes_name: "ノースフライト", shoes_name_en: "North Flight" },
+            { shoes_no: "097", shoes_name: "ドゥラメンテ", shoes_name_en: "Duramente" },
+            { shoes_no: "098", shoes_name: "ヴィルシーナ", shoes_name_en: "Verxina" },
+            { shoes_no: "099", shoes_name: "ヴィブロス", shoes_name_en: "Vivlos" },
+            // { shoes_no: "100", shoes_name: "サムソンビッグ", shoes_name_en: "Samson Big" },
+            { shoes_no: "101", shoes_name: "ロイスアンドロイス", shoes_name_en: "Royce and Royce" },
+            { shoes_no: "102", shoes_name: "シーザリオ", shoes_name_en: "Cesario" },
+            { shoes_no: "103", shoes_name: "ラインクラフト", shoes_name_en: "Rhein Kraft" },
+            { shoes_no: "104", shoes_name: "エアメサイア", shoes_name_en: "Air Messiah" },
+            // { shoes_no: "105", shoes_name: "デアリングハート", shoes_name_en: "Daring Heart" },
+            { shoes_no: "106", shoes_name: "オルフェーヴル", shoes_name_en: "Orfevre" },
+            { shoes_no: "107", shoes_name: "ジェンティルドンナ", shoes_name_en: "Gentildonna" },
+            { shoes_no: "108", shoes_name: "ウインバリアシオン", shoes_name_en: "Win Variation" },
+            { shoes_no: "109", shoes_name: "スティルインラブ", shoes_name_en: "Still in Love" },
+            { shoes_no: "110", shoes_name: "ダンツフレーム", shoes_name_en: "Dantsu Flame" },
+            { shoes_no: "111", shoes_name: "ノーリーズン", shoes_name_en: "No Reason" },
+            { shoes_no: "112", shoes_name: "フリオーソ", shoes_name_en: "Furioso" },
+            { shoes_no: "113", shoes_name: "トランセンド", shoes_name_en: "Transcend" },
+            { shoes_no: "114", shoes_name: "エスポワールシチー", shoes_name_en: "Espoir City" },
+            { shoes_no: "115", shoes_name: "ドリームジャーニー", shoes_name_en: "Dream Journey" },
+            { shoes_no: "116", shoes_name: "ブエナビスタ", shoes_name_en: "Buena Vista" },
+            { shoes_no: "117", shoes_name: "ビリーヴ", shoes_name_en: "Believe" },
+            { shoes_no: "118", shoes_name: "カルストンライトオ", shoes_name_en: "Calstone Light O" },
+            { shoes_no: "119", shoes_name: "デュランダル", shoes_name_en: "Durandal" },
+            { shoes_no: "120", shoes_name: "バブルガムフェロー", shoes_name_en: "Bubble Gum Fellow" },
+            { shoes_no: "121", shoes_name: "フサイチパンドラ", shoes_name_en: "Fusaichi Pandora" },
+            // { shoes_no: "122", shoes_name: "ブラストワンピース", shoes_name_en: "Blast Onepiece" },
+            // { shoes_no: "123", shoes_name: "サクラチトセオー", shoes_name_en: "Sakura Chitose O" },
+            { shoes_no: "124", shoes_name: "グランアレグリア", shoes_name_en: "Gran Alegria" },
+            // { shoes_no: "125", shoes_name: "ラッキーライラック", shoes_name_en: "Lucky Lilac" },
+            { shoes_no: "126", shoes_name: "アーモンドアイ", shoes_name_en: "Almond Eye" },
+            { shoes_no: "127", shoes_name: "ラヴズオンリーユー", shoes_name_en: "Loves Only You" },
+            { shoes_no: "128", shoes_name: "クロノジェネシス", shoes_name_en: "Chrono Genesis" },
+            // { shoes_no: "129", shoes_name: "カレンブーケドール", shoes_name_en: "Curren Bouquetd'or" },
+            { shoes_no: "130", shoes_name: "フェノーメノ", shoes_name_en: "Fenomeno" },
+            { shoes_no: "131", shoes_name: "ステイゴールド", shoes_name_en: "Stay Gold" },
+            // { shoes_no: "132", shoes_name: "アドマイヤグルーヴ", shoes_name_en: "Admire Groove" },
+            // { shoes_no: "133", shoes_name: "レッドディザイア", shoes_name_en: "Red Desire" },
+            { shoes_no: "134", shoes_name: "キセキ", shoes_name_en: "Kiseki" },
+            // { shoes_no: "135", shoes_name: "フォーエバーヤング", shoes_name_en: "Forever Young" },
+            { shoes_no: "136", shoes_name: "ヴィクトワールピサ", shoes_name_en: "Victoire Pisa" },
+            // { shoes_no: "137", shoes_name: "マルシュロレーヌ", shoes_name_en: "Marche Lorraine" },
+            // { shoes_no: "138", shoes_name: "ロゴタイプ", shoes_name_en: "Logotype" },
+            // { shoes_no: "139", shoes_name: "ローズキングダム", shoes_name_en: "Rose Kingdom" },
+            // { shoes_no: "140", shoes_name: "ルーラーシップ", shoes_name_en: "Rulership" },
+            // { shoes_no: "141", shoes_name: "エピファネイア", shoes_name_en: "Epiphaneia" },
+        ];
 
         // 状態管理変数
         const TOTAL_QUESTIONS = 10;
@@ -525,17 +528,17 @@
                 return;
             }
 
-            const matches = shoesDB.filter(s => s.shoes_name.toLowerCase().includes(val));
+            const matches = shoesDB.filter(s => s.shoes_name.toLowerCase().includes(val)).map((x) => x.shoes_name).concat(shoesDB.filter(s => s.shoes_name_en.toLowerCase().includes(val)).map((x) => x.shoes_name_en));
             
             if (matches.length > 0) {
                 matches.forEach(match => {
                     const item = document.createElement('div');
                     item.className = 'flex items-center gap-4 p-4 hover:bg-surface-container-low rounded-lg cursor-pointer transition-colors group';
                     item.innerHTML = `
-                        <span class="font-bold text-on-surface group-hover:text-primary transition-colors">${match.shoes_name}</span>
+                        <span class="font-bold text-on-surface group-hover:text-primary transition-colors">${match}</span>
                     `;
                     item.onclick = () => {
-                        inputField.value = match.shoes_name;
+                        inputField.value = match;
                         suggestBox.classList.add('hidden');
                     };
                     suggestList.appendChild(item);
@@ -562,13 +565,19 @@
         function checkAnswer() {
             const userAnswer = inputField.value.trim().toLowerCase();
             const correctAnswer = currentShoe.shoes_name.toLowerCase();
-            const isCorrect = (userAnswer === correctAnswer);
+            const isCorrect = (userAnswer === currentShoe.shoes_name.toLowerCase() || userAnswer === currentShoe.shoes_name_en.toLowerCase());
 
             if (isCorrect) score++;
 
             // 答え合わせ画面のUI更新
             document.getElementById('answer-progress-text').innerText = `Question ${currentQuestionIndex.toString().padStart(2, '0')} / ${TOTAL_QUESTIONS}`;
             document.getElementById('answer-image').style = `height:${(wear_type_text == '私服の靴') ? 400 : 600}px`;
+
+            if (wear_type_text == '勝負服の靴') {
+                document.getElementById('answer-shoes-image').classList.add('hidden');
+            } else {
+                document.getElementById('answer-shoes-image').classList.remove('hidden');
+            }
             
             const titleEl = document.getElementById('result-title');
             const iconEl = document.getElementById('result-icon');
@@ -589,7 +598,8 @@
             }
 
             // 画像と名前を更新
-            document.getElementById('correct-shoe-name').innerHTML = currentShoe.shoes_name.replace('PRO', '<span class="text-primary">PRO</span>');
+            document.getElementById('correct-shoe-name').innerHTML = currentShoe.shoes_name;
+            document.getElementById('correct-shoe-name-en').innerHTML = currentShoe.shoes_name_en;
             document.getElementById('answer-image').src = `./img/${currentShoe.shoes_no}${wear_type_no + 1}.jpg`;
 
             switchView('answer');
