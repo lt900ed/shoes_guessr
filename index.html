@@ -109,7 +109,7 @@
             <h1 class="text-[#1a1c1e] dark:text-[#f9f9fc] font-black uppercase tracking-widest font-headline text-1xl md:text-2xl">
                 UmaShoesGuessr
             </h1>
-            <div class="flex items-center gap-6" style="display:none">
+            <div class="flex items-center gap-6 hidden">
                 <nav class="hidden md:flex gap-8">
                     <a class="text-[#0041c8] font-bold border-b-4 border-[#0041c8] hover:opacity-80 transition-opacity" href="#">Sprint</a>
                     <a class="text-[#c3c5d9] font-medium hover:opacity-80 transition-opacity" href="#">Gallery</a>
@@ -119,11 +119,15 @@
                     <span class="material-symbols-outlined text-3xl" data-icon="account_circle">account_circle</span>
                 </button>
             </div>
+            <div id="language-switcher" class="flex items-center gap-2">
+                <button id="lang-ja" class="px-3 py-1 text-sm font-medium rounded-md bg-primary text-on-primary hover:opacity-80 transition-opacity">JA</button>
+                <button id="lang-en" class="px-3 py-1 text-sm font-medium rounded-md bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-opacity">EN</button>
+            </div>
         </div>
         <div class="bg-[#f3f3f6] dark:bg-[#2e3032] h-[0.5rem] w-full"></div>
     </header>
 
-    <main id="view-title" class="view-section active relative flex-grow flex-col items-center justify-center pt-16 md:pt-24 pb-32">
+    <main id="view-title" class="view-section active relative flex-grow flex-col items-center justify-center pt-16 md:pt-24 pb-32 overflow-clip">
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-[600px] overflow-hidden -z-10">
             <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary-container/10 rounded-full blur-[120px]"></div>
             <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-primary/10 rounded-full blur-[100px]"></div>
@@ -133,14 +137,14 @@
             <div class="mb-12 relative inline-block">
                 <div class="absolute -inset-4 bg-surface-container-low rounded-xl -rotate-3 -z-10"></div>
                 <div class="absolute -inset-4 bg-primary/5 rounded-xl rotate-3 -z-10"></div>
-                <div class="flex items-center justify-center mb-6">
+                <div class="flex items-center justify-center mb-4 md:mb-6">
                     <span class="material-symbols-outlined text-primary text-8xl" style="font-variation-settings: 'FILL' 1;">shoe_cleats</span>
                 </div>
-                <h1 class="font-headline font-black text-5xl md:text-7xl tracking-tighter text-on-surface leading-none mb-4 italic">
+                <h1 class="font-headline font-black text-5xl md:text-7xl tracking-tighter text-on-surface leading-none mb-3 md:mb-4 italic">
                     UmaShoes<wbr>Guessr
                 </h1>
                 <p class="font-body font-bold text-primary uppercase tracking-[0.4em] text-sm md:text-base">
-                    The Ultimate Sneaker Challenge
+                    The Ultimate Shoes Challenge
                 </p>
             </div>
             
@@ -186,7 +190,7 @@
     </main>
 
     <main id="view-question" class="view-section flex-grow flex-col items-center pt-16 md:pt-24 pb-10 px-6 max-w-2xl mx-auto">
-        <div class="w-full flex flex-col items-center gap-4 mb-4">
+        <div class="w-full flex flex-col items-center gap-4 mb-3 md:mb-4">
             <div id="progress-bar-container" class="flex gap-1 w-full max-w-xs">
                 </div>
             <div id="progress-text" class="font-headline text-primary font-extrabold text-4xl tracking-tighter">
@@ -225,15 +229,15 @@
         </div>
     </main>
 
-    <main id="view-answer" class="view-section flex-grow flex-col items-center pt-16 md:pt-24 pb-10 px-6 max-w-4xl mx-auto w-full">
-        <section class="w-full text-center mb-4">
-            <span id="answer-progress-text" class="font-label font-bold text-primary tracking-[0.3em] uppercase text-sm mb-4 block">Question 01 / 10</span>
-            <h2 id="result-title" class="font-headline font-black text-5xl tracking-tighter text-on-background italic transform -skew-x-6">
+    <main id="view-answer" class="view-section flex-grow flex-col items-center pt-14 md:pt-24 pb-10 px-6 max-w-4xl mx-auto w-full">
+        <section class="w-full text-center mb-3 md:mb-4">
+            <span id="answer-progress-text" class="font-label font-bold text-primary tracking-[0.3em] uppercase text-sm mb-3 md:mb-4 block">Question 01 / 10</span>
+            <h2 id="result-title" class="font-headline font-black text-4xl md:text-5xl tracking-tighter text-on-background italic transform -skew-x-6">
                 正解！
             </h2>
         </section>
 
-        <section class="relative w-66 aspect-3/4 mb-4 max-w-2xl mx-auto">
+        <section class="relative w-66 aspect-3/4 mb-3 md:mb-4 max-w-2xl mx-auto">
             <div class="absolute inset-0 bg-surface-container-low rounded-xl -rotate-2 scale-105"></div>
             <div class="relative z-10 w-66 h-full overflow-hidden rounded-xl kinetic-shadow border-4 border-surface-container-lowest">
                 <img id="answer-image" alt="Shoe Detail" class="object-cover" style="height:400px" src=""/>
@@ -248,7 +252,7 @@
             </div>
         </section>
 
-        <section class="w-full text-center mb-4">
+        <section class="w-full text-center mb-3 md:mb-4">
             <div class="inline-flex items-center gap-2 text-outline font-label font-medium text-lg hidden">
                 <span id="result-icon" class="material-symbols-outlined">verified</span>
                 <span id="result-label">正解：</span>
@@ -263,7 +267,7 @@
 
         <div class="left-0 w-full flex justify-center px-6 z-40 pointer-events-none">
             <button onclick="nextStep()" class="pointer-events-auto w-full max-w-md rounded-full main-button text-on-primary py-6 px-8 flex items-center justify-center gap-3 shadow-[0_12px_48px_rgba(0,65,200,0.3)] active:scale-95 transition-transform duration-200">
-                <span class="text-white font-headline font-bold text-xl tracking-widest uppercase">次へ進む</span>
+                <span id="next-step-text" class="text-white font-headline font-bold text-xl tracking-widest uppercase">次へ進む</span>
                 <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
             </button>
         </div>
@@ -276,7 +280,7 @@
             
             <div class="w-full bg-surface-container-lowest rounded-xl p-8 text-center relative overflow-hidden shadow-sm">
                 <div class="py-12">
-                    <p id="final-score-title" class="font-headline font-bold text-on-surface-variant uppercase tracking-widest text-lg mb-4">Final Score Of 私服の靴</p>
+                    <p id="final-score-title" class="font-headline font-bold text-on-surface-variant uppercase tracking-widest text-lg mb-3 md:mb-4">Final Score Of 私服の靴</p>
                     <div class="flex flex-col items-center justify-center relative">
                         <span id="final-score" class="font-headline font-black text-[8rem] leading-none tracking-tighter text-primary">8/10</span>
                         <div class="absolute bottom-4 h-4 w-48 main-button rounded-full opacity-20 -rotate-2 translate-y-4"></div>
@@ -291,7 +295,7 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mt-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mt-6">
                 <button onclick="shareOnX()" class="main-button rounded-full py-6 px-10 flex items-center justify-center gap-4 text-white hover:opacity-90 transition-all active:scale-95 group shadow-xl">
                     <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.925H5.022z"></path></svg>
                     <span class="font-headline font-bold text-xl tracking-tight">結果をXで共有</span>
@@ -309,6 +313,105 @@
     </main>
 
     <script>
+        // 翻訳データ
+        const translations = {
+            ja: {
+                easyButton: "勝負服に挑戦！<br>Easy",
+                hardButton: "私服に挑戦！<br>Hard",
+                subtitle: "The Ultimate Sneaker Challenge",
+                pressText: "Press to engage speed",
+                skip: "スキップ",
+                showAnswer: "答えを表示",
+                question: "Question",
+                correct: "正解！",
+                incorrect: "不正解...",
+                correctLabel: "正解：",
+                correctAnswerLabel: "正しい答え：",
+                next: "次へ進む",
+                finalScoreOf: "Final Score Of",
+                casualShoes: "私服の靴",
+                raceShoes: "勝負服の靴",
+                perfectTitle: "パーフェクト！靴の神様です！",
+                perfectDesc: "全問正解！あなたの靴愛と知識はまさに神レベル。",
+                expertTitle: "あなたは靴博士です！",
+                expertDesc: "驚異的な観察力です。一流のトレーナーに匹敵する知識を持ち合わせています。",
+                goodTitle: "靴マニアの片鱗",
+                goodDesc: "悪くないスコアです！もう少しでトレセンの視線を独り占めできるレベル。",
+                beginnerTitle: "まだまだこれから！",
+                beginnerDesc: "まずは色んな靴を見てみることから始めましょう。伸びしろしかありません。",
+                shareOnX: "結果をXで共有",
+                copyResult: "結果をコピー",
+                restart: "最初から",
+                copyAlert: "クリップボードにコピーしました！"
+            },
+            en: {
+                easyButton: "Challenge the Race Wear!<br>Easy",
+                hardButton: "Challenge the Casual Outfit!<br>Hard",
+                subtitle: "The Ultimate Shoes Challenge",
+                pressText: "Press to engage speed",
+                skip: "Skip",
+                showAnswer: "Show Answer",
+                question: "Question",
+                correct: "Correct!",
+                incorrect: "Incorrect...",
+                correctLabel: "Correct:",
+                correctAnswerLabel: "Correct Answer:",
+                next: "Next",
+                finalScoreOf: "Final Score Of",
+                casualShoes: "Casual Shoes",
+                raceShoes: "Race Shoes",
+                perfectTitle: "Perfect! You're a Shoe God!",
+                perfectDesc: "All correct! Your shoe love and knowledge are truly divine level.",
+                expertTitle: "You're a Shoe Expert!",
+                expertDesc: "Amazing observation skills. You have knowledge comparable to top trainers.",
+                goodTitle: "Signs of a Shoe Maniac",
+                goodDesc: "Not bad score! You're almost at the level to monopolize the trainer's gaze.",
+                beginnerTitle: "There's still room to grow!",
+                beginnerDesc: "Start by looking at various shoes. There's plenty of potential.",
+                shareOnX: "Share on X",
+                copyResult: "Copy Result",
+                restart: "Restart",
+                copyAlert: "Copied to clipboard!"
+            }
+        };
+
+        // 現在の言語を取得（URLパラメータまたはデフォルト）
+        function getCurrentLang() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('lang') || 'ja';
+        }
+
+        // 言語を切り替え
+        function setLanguage(lang) {
+            const url = new URL(window.location);
+            url.searchParams.set('lang', lang);
+            window.location.href = url.toString();
+        }
+
+        // テキストを翻訳
+        function applyTranslations(lang) {
+            const t = translations[lang];
+
+            // ボタン
+            document.querySelector('.main-button span').innerHTML = t.easyButton;
+            document.querySelector('.hard-button span').innerHTML = t.hardButton;
+
+            // 言語ボタンのスタイル
+            document.getElementById('lang-ja').classList.toggle('bg-primary', lang === 'ja');
+            document.getElementById('lang-ja').classList.toggle('text-on-primary', lang === 'ja');
+            document.getElementById('lang-ja').classList.toggle('bg-surface-container-high', lang !== 'ja');
+            document.getElementById('lang-ja').classList.toggle('text-on-surface', lang !== 'ja');
+
+            document.getElementById('lang-en').classList.toggle('bg-primary', lang === 'en');
+            document.getElementById('lang-en').classList.toggle('text-on-primary', lang === 'en');
+            document.getElementById('lang-en').classList.toggle('bg-surface-container-high', lang !== 'en');
+            document.getElementById('lang-en').classList.toggle('text-on-surface', lang !== 'en');
+
+            // グローバル変数として保存
+            window.currentLang = lang;
+            window.translations = t;
+        }
+
         // 靴のデータベース
         const shoesDB = [
             { shoes_no: "001", shoes_name: "スペシャルウィーク", shoes_name_en: "Special Week" },
@@ -472,6 +575,14 @@
         const suggestBox = document.getElementById('suggestion-box');
         const suggestList = document.getElementById('suggestion-list');
 
+        // 言語初期化
+        const currentLang = getCurrentLang();
+        applyTranslations(currentLang);
+
+        // 言語切り替えボタン
+        document.getElementById('lang-ja').addEventListener('click', () => setLanguage('ja'));
+        document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+
         // ビュー切り替え関数
         function switchView(viewName) {
             Object.values(views).forEach(v => v.classList.remove('active'));
@@ -484,7 +595,7 @@
             currentQuestionIndex = 0;
             score = 0;
             wear_type_no = (wear_type == 'casual') ? 1 : 3;
-            wear_type_text = (wear_type == 'casual') ? "私服の靴" : "勝負服の靴";
+            wear_type_text = (wear_type == 'casual') ? window.translations.casualShoes : window.translations.raceShoes;
             // プレイごとに問題リストをリセットしてシャッフル
             availableShoes = shuffle([...shoesDB]);
             renderQuestion();
@@ -495,6 +606,9 @@
             currentQuestionIndex++;
             currentShoe = availableShoes.pop();
 
+            // 言語ボタン非表示
+            document.getElementById('language-switcher').classList.add('hidden');
+
             // プログレスバーの更新
             const progressContainer = document.getElementById('progress-bar-container');
             progressContainer.innerHTML = '';
@@ -504,7 +618,7 @@
                 progressContainer.appendChild(div);
             }
             document.getElementById('progress-text').innerHTML = `${currentQuestionIndex}<span class="text-outline-variant mx-1">/</span>${TOTAL_QUESTIONS}`;
-            document.getElementById('skip-button-text').innerText = 'スキップ';
+            document.getElementById('skip-button-text').innerText = window.translations.skip;
 
             // 画像の更新
             const imageUrl = `./img/${currentShoe.shoes_no}${wear_type_no}.jpg`;
@@ -548,9 +662,9 @@
                 suggestBox.classList.add('hidden');
             }
             if (inputField.value == '') {
-                document.getElementById('skip-button-text').innerText = 'スキップ';
+                document.getElementById('skip-button-text').innerText = window.translations.skip;
             } else {
-                document.getElementById('skip-button-text').innerText = '答えを表示';
+                document.getElementById('skip-button-text').innerText = window.translations.showAnswer;
             }
         });
 
@@ -570,10 +684,11 @@
             if (isCorrect) score++;
 
             // 答え合わせ画面のUI更新
-            document.getElementById('answer-progress-text').innerText = `Question ${currentQuestionIndex.toString().padStart(2, '0')} / ${TOTAL_QUESTIONS}`;
-            document.getElementById('answer-image').style = `height:${(wear_type_text == '私服の靴') ? 400 : 600}px`;
+            document.getElementById('answer-progress-text').innerText = `${window.translations.question} ${currentQuestionIndex.toString().padStart(2, '0')} / ${TOTAL_QUESTIONS}`;
+            document.getElementById('answer-image').style = `height:${(wear_type_text == window.translations.casualShoes) ? 400 : 600}px`;
+            document.getElementById('next-step-text').innerText = window.translations.next;
 
-            if (wear_type_text == '勝負服の靴') {
+            if (wear_type_text == window.translations.raceShoes) {
                 document.getElementById('answer-shoes-image').classList.add('hidden');
             } else {
                 document.getElementById('answer-shoes-image').classList.remove('hidden');
@@ -584,17 +699,17 @@
             const labelEl = document.getElementById('result-label');
             
             if (isCorrect) {
-                titleEl.innerText = "正解！";
-                titleEl.className = "font-headline font-black text-5xl tracking-tighter text-on-background italic transform -skew-x-6 text-primary";
+                titleEl.innerText = window.translations.correct;
+                titleEl.className = "font-headline font-black text-4xl md:text-5xl tracking-tighter text-on-background italic transform -skew-x-6 text-primary";
                 iconEl.innerText = "verified";
                 iconEl.className = "material-symbols-outlined text-primary";
-                labelEl.innerText = "正解：";
+                labelEl.innerText = window.translations.correctLabel;
             } else {
-                titleEl.innerText = "不正解...";
-                titleEl.className = "font-headline font-black text-5xl tracking-tighter text-outline italic transform -skew-x-6";
+                titleEl.innerText = window.translations.incorrect;
+                titleEl.className = "font-headline font-black text-4xl md:text-5xl tracking-tighter text-outline italic transform -skew-x-6";
                 iconEl.innerText = "cancel";
                 iconEl.className = "material-symbols-outlined text-error";
-                labelEl.innerText = "正しい答え：";
+                labelEl.innerText = window.translations.correctAnswerLabel;
             }
 
             // 画像と名前を更新
@@ -621,37 +736,59 @@
             const scoreTitleEl = document.getElementById('final-score-title');
             const titleEl = document.getElementById('final-message-title');
             const descEl = document.getElementById('final-message-desc');
-            scoreTitleEl.innerText = `Final Score Of ${wear_type_text}`;
+            const wearTypeText = (wear_type_text === "私服の靴") ? window.translations.casualShoes : window.translations.raceShoes;
+            scoreTitleEl.innerText = `${window.translations.finalScoreOf} ${wearTypeText}`;
 
             if (score === TOTAL_QUESTIONS) {
-                titleEl.innerText = "パーフェクト！靴の神様です！";
-                descEl.innerText = "全問正解！あなたの靴愛と知識はまさに神レベル。";
+                titleEl.innerText = window.translations.perfectTitle;
+                descEl.innerText = window.translations.perfectDesc;
             } else if (score >= 7) {
-                titleEl.innerText = "あなたは靴博士です！";
-                descEl.innerText = "驚異的な観察力です。一流のトレーナーに匹敵する知識を持ち合わせています。";
+                titleEl.innerText = window.translations.expertTitle;
+                descEl.innerText = window.translations.expertDesc;
             } else if (score >= 4) {
-                titleEl.innerText = "靴マニアの片鱗";
-                descEl.innerText = "悪くないスコアです！もう少しでトレセンの視線を独り占めできるレベル。";
+                titleEl.innerText = window.translations.goodTitle;
+                descEl.innerText = window.translations.goodDesc;
             } else {
-                titleEl.innerText = "まだまだこれから！";
-                descEl.innerText = "まずは色んな靴を見てみることから始めましょう。伸びしろしかありません。";
+                titleEl.innerText = window.translations.beginnerTitle;
+                descEl.innerText = window.translations.beginnerDesc;
             }
+
+            // ボタンのテキストも更新
+            document.querySelector('button[onclick="shareOnX()"] span:last-child').innerText = window.translations.shareOnX;
+            document.querySelector('button[onclick="copyResult()"] span:last-child').innerText = window.translations.copyResult;
+            document.querySelector('button[onclick="location.reload();return false;"] span:last-child').innerText = window.translations.restart;
 
             switchView('result');
         }
 
         // 結果をXで共有 (Web Intent)
         function shareOnX() {
-            const text = `「UmaShoesGuessr」で${wear_type_text}を${TOTAL_QUESTIONS}問中${score}問当てました！👟⚡️\nhttps://lt900ed.github.io/shoes_guessr/\n#UmaShoesGuessr #ウマ娘`;
-            const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+            const wearTypeText = (wear_type_text === "私服の靴") ? window.translations.casualShoes : window.translations.raceShoes;
+            switch (window.currentLang){
+                case 'en':
+                    tmp_text = `I got ${score} out of ${TOTAL_QUESTIONS} questions right on “UmaShoesGuessr” ${wearTypeText} quiz!👟⚡️\nhttps://lt900ed.github.io/shoes_guessr/\n#UmaShoesGuessr #Umamusume`;
+                    break;
+                default:
+                    tmp_text = `「UmaShoesGuessr」で${wearTypeText}を${TOTAL_QUESTIONS}問中${score}問当てました！👟⚡️\nhttps://lt900ed.github.io/shoes_guessr/\n#UmaShoesGuessr #ウマ娘`;
+                }
+            
+            const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tmp_text)}`;
             window.open(url, '_blank');
         }
 
         // 結果をコピー (Clipboard API)
         function copyResult() {
-            const text = `「UmaShoesGuessr」で${wear_type_text}を${TOTAL_QUESTIONS}問中${score}問当てました！👟⚡️\nhttps://lt900ed.github.io/shoes_guessr/`;
-            navigator.clipboard.writeText(text).then(() => {
-                alert("クリップボードにコピーしました！");
+            const wearTypeText = (wear_type_text === "私服の靴") ? window.translations.casualShoes : window.translations.raceShoes;
+            switch (window.currentLang){
+                case 'en':
+                    tmp_text = `I got ${score} out of ${TOTAL_QUESTIONS} questions right on “UmaShoesGuessr” ${wearTypeText} quiz!👟⚡️\nhttps://lt900ed.github.io/shoes_guessr/`;
+                    break;
+                default:
+                    tmp_text = `「UmaShoesGuessr」で${wearTypeText}を${TOTAL_QUESTIONS}問中${score}問当てました！👟⚡️\nhttps://lt900ed.github.io/shoes_guessr/`;
+                }
+            
+            navigator.clipboard.writeText(tmp_text).then(() => {
+                alert(window.translations.copyAlert);
             }).catch(err => {
                 console.error('コピーに失敗しました', err);
             });
@@ -674,6 +811,9 @@
     <footer class="w-full text-center py-4 text-outline-variant text-xs select-none">
         <a href="https://twitter.com/lt900ed" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
             @lt900ed
+        </a>
+        <a href="https://lt900ed.github.io/receipt_factor/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
+            レシート因子メーカー
         </a>
     </footer>
 </body>
