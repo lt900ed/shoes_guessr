@@ -590,6 +590,18 @@
             window.scrollTo(0, 0);
         }
 
+        // ランダム検証
+        function checkRandom() {
+            result = shoesDB.map((x) => ({ shoes_no: x.shoes_no, cnt: 0 }));
+            [...Array(1000)].map(() => {
+                availableShoes = shuffle([...shoesDB]);
+                availableShoes.slice(0,10).forEach(s => {
+                    result.find(r => r.shoes_no === s.shoes_no).cnt++;
+                });
+            });
+            console.log(result.map(r => r.shoes_no + "\t" + r.cnt).join("\n"));
+        }
+
         // クイズ開始
         function startQuiz(wear_type) {
             currentQuestionIndex = 0;
